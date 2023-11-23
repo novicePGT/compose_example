@@ -11,6 +11,7 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.text.BasicTextField
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
@@ -26,6 +27,7 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
+            val name = ""
             Compose_exampleTheme {
                 // TODO : Surface 특징 정리하기
                 Surface(
@@ -37,13 +39,33 @@ class MainActivity : ComponentActivity() {
                         .padding(16.dp),
                         horizontalAlignment = Alignment.CenterHorizontally,
                         verticalArrangement = Arrangement.Center,
-                        
                     ) {
                         Text("Hello")
                         Text("World")
+                        Spacer(modifier = Modifier.width(16.dp))
+                        BasicTextField(value = "", onValueChange = name::plus)
                     }
                 }
             }
+        }
+    }
+}
+
+@Preview(showBackground = true)
+@Composable
+fun DefaultPreview() {
+    Compose_exampleTheme {
+        Column(modifier = Modifier
+            .fillMaxSize()
+            .background(color = Color.LightGray)
+            .padding(16.dp),
+            horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.Center,
+        ) {
+            Text("Hello")
+            Text("World")
+            Spacer(modifier = Modifier.width(16.dp))
+            BasicTextField(value = "", onValueChange = {})
         }
     }
 }
